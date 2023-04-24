@@ -1,0 +1,7 @@
+{
+  "admin": "orai1aeamw40c5tm3gy475qw8q73hu8kda72seqfyzx",
+  "network": {
+    "rpc": "https://testnet-rpc.orai.io:443",
+    "prefix": "orai"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QueryMsg",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "VerifyProof"
+      ],
+      "properties": {
+        "VerifyProof": {
+          "type": "object",
+          "required": [
+            "api_version",
+            "porep_id",
+            "proof_raw",
+            "public_inputs",
+            "sector_size"
+          ],
+          "properties": {
+            "api_version": {
+              "$ref": "#/definitions/ApiVersion"
+            },
+            "porep_id": {
+              "type": "string"
+            },
+            "proof_raw": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "uint8",
+                "minimum": 0.0
+              }
+            },
+            "public_inputs": {
+              "$ref": "#/definitions/PublicInputs_for_PoseidonDomain_and_Sha256Domain"
+            },
+            "sector_size": {
+              "type": "integer",
+              "format": "uint64",
+              "minimum": 0.0
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "definitions": {
+    "ApiVersion": {
+      "type": "string",
+      "enum": [
+        "V1_0_0",
+        "V1_1_0"
+      ]
+    },
+    "PoseidonDomain": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "uint8",
+        "minimum": 0.0
+      },
+      "maxItems": 32,
+      "minItems": 32
+    },
+    "PublicInputs_for_PoseidonDomain_and_Sha256Domain": {
+      "type": "object",
+      "required": [
+        "replica_id",
+        "seed"
+      ],
+      "properties": {
+        "k": {
+          "description": "Partition index",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0.0
+        },
+        "replica_id": {
+          "$ref": "#/definitions/PoseidonDomain"
+        },
+        "seed": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint8",
+            "minimum": 0.0
+          },
+          "maxItems": 32,
+          "minItems": 32
+        },
+        "tau": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Tau_for_PoseidonDomain_and_Sha256Domain"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "Sha256Domain": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "uint8",
+        "minimum": 0.0
+      },
+      "maxItems": 32,
+      "minItems": 32
+    },
+    "Tau_for_PoseidonDomain_and_Sha256Domain": {
+      "description": "Tau for a single parition.",
+      "type": "object",
+      "required": [
+        "comm_d",
+        "comm_r"
+      ],
+      "properties": {
+        "comm_d": {
+          "$ref": "#/definitions/Sha256Domain"
+        },
+        "comm_r": {
+          "$ref": "#/definitions/PoseidonDomain"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+[workspace]
+members = ["fr32", "hashers", "proofs-core", "proofs-porep", "sha2raw", "contract-auxiliaries", "porep_app", "converter", "contract", "seal"]
+resolver = "2"
+
+[profile.release]
+opt-level = 3
+debug = false
+debug-assertions = false
+codegen-units = 1
+incremental = false
+rpath = false
+lto = true
+overflow-checks = true
+panic = 'abort'

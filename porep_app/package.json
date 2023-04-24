@@ -1,0 +1,18 @@
+{
+  "name": "porep_app",
+  "version": "0.1.0",
+  "description": "Eueno Proof of Replication Proof Generator",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "repository": "https://github.com/ziden-dev/eueno-proof-of-replication.git",
+  "author": "Oraichain Labs",
+  "license": "MIT",
+  "private": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse RUSTFLAGS='-C link-arg=-s -C target-cpu=native' RUSTUP_TOOLCHAIN=nightly nj-cli build --release --",
+    "postinstall": "yarn -s build"
+  }
+}

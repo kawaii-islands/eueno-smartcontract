@@ -1,0 +1,24 @@
+{
+  "name": "eueno-smartcontract",
+  "version": "1.0.0",
+  "description": "a smart contract for social-login wallet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "meomeocoj",
+  "license": "ISC",
+  "dependencies": {
+    "@cosmjs/cosmwasm-stargate": "^0.29.5",
+    "@cosmjs/proto-signing": "^0.29.5",
+    "@cosmjs/stargate": "^0.29.5",
+    "@types/node": "^18.11.18",
+    "dotenv": "^16.0.3",
+    "joi": "^17.9.1",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@cosmwasm/ts-codegen": "^0.24.0",
+    "@tsconfig/node16-strictest-esm": "^1.0.3"
+  }
+}
