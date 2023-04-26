@@ -36,16 +36,16 @@ const submitProofTest = async () => {
         file_path: filePath,
     });
 
-    console.log("proof_raw", proof_raw);
-    let txSetVerify = await setVerifyParams(
-        {
-            set_verifier_params: {
-                params: {setup_params, minimum_challenges: 1, vk: vk_raw},
-                sector_size: "sector_size2_kib",
-                duration: 1312312,
-            },
-        });
-    console.log("txSetVerify", txSetVerify);
+    // console.log("proof_raw", proof_raw);
+    // let txSetVerify = await setVerifyParams(
+    //     {
+    //         set_verifier_params: {
+    //             params: {setup_params, minimum_challenges: 1, vk: vk_raw},
+    //             sector_size: "sector_size2_kib",
+    //             duration: 1312312,
+    //         },
+    //     });
+    // console.log("txSetVerify", txSetVerify);
 
     const submitProofData = {
         submit_proof: {

@@ -12,7 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse RUSTFLAGS='-C link-arg=-s -C target-cpu=native' RUSTUP_TOOLCHAIN=nightly nj-cli build --release --",
+    "build": "CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse RUSTFLAGS='-C link-arg=-s' RUSTUP_TOOLCHAIN=nightly nj-cli build --release --",
     "postinstall": "yarn -s build"
   },
   "dependencies": {
