@@ -7,9 +7,9 @@ console.log(filePath);
 
 const submitProofTest = async () => {
 
-    const porep_id = crypto.randomBytes(32).toString('base64');
+    const porep_id = "CCfpg6EwKekgRlZp6nOD5Ua6h/dnX8CrsYqtssj02hQ=";
     const prover_id = Buffer.from("ab5a507792a559a63a30ff09091c267c454c563c3c6c88dd7c4785f0c63eaadc", "hex").toString("base64");
-    const ticket = crypto.randomBytes(32).toString('base64');
+    const ticket = "A/Zs66rqKf/eItl8zetZ1ct3GSqeEG4CH0K4Zlknqh0=";
     const sector_id = 1;
 
     console.log("==================>");
