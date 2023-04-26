@@ -1,60 +1,52 @@
-declare module 'porep_app' {
-  /* tslint:disable */
-  /* eslint-disable */
+/* tslint:disable */
+/* eslint-disable */
 
-  export type SupportedSectorSize = 'SectorSize2Kib' | 'SectorSize4Kib' | 'SectorSize16Kib' | 'SectorSize32Kib' | 'SectorSize8Mib' | 'SectorSize16Mib' | 'SectorSize512Mib' | 'SectorSize1Gib' | 'SectorSize32Gib' | 'SectorSize64Gib';
+import {
+    ApiVersion,
+    Binary,
+    PublicInputsForPoseidonDomainAndSha256Domain,
+    SetupParams,
+    SupportedSectorSize
+} from './types';
 
-  export type ApiVersion = '1.0.0' | '1.1.0';
-
-  export interface SetupParams {
-    nodes: number;
-    degree: number;
-    expansion_degree: number;
-    porep_id: string;
-    layer_challenges: {
-      layers: number;
-      max_count: number;
-    };
-    api_version: ApiVersion;
-  }
-
-  export interface SetupResult {
+export interface SetupResult {
     setup_params: SetupParams;
-    vk_le: string;
-  }
+    vk_raw: Binary;
+}
 
-  export interface Setup {
+export interface Setup {
     sector_size: SupportedSectorSize;
     porep_id: string;
     api_version: ApiVersion;
-  }
+}
 
-  export interface SealResult {
+export interface SealResult {
     sector_size: number;
-    proof_le: string;
-    public_inputs: string;
-  }
+    proof_raw: Binary;
+    public_inputs: PublicInputsForPoseidonDomainAndSha256Domain;
+}
 
-  export interface Seal {
+export interface Seal {
     // setup
-    setup_params: SetupParams;
+    porep_id: string;
+    api_version: ApiVersion;
 
     // public input
     file_path: string;
-    prover_id?: string; // hex
-    sector_id?: string; // dec
-    seed?: string; // hex,
-    ticket?: string; // hex
-  }
-
-  /**
-   * @param {Setup} args
-   * @returns {string}
-   */
-  export function setup(args: Setup): SetupResult;
-  /**
-   * @param {UinSealt8Array} args
-   * @returns {string}
-   */
-  export function seal(args: Seal): SealResult;
+    prover_id: string; // base64
+    sector_id: number; // base64
+    ticket: string; // base64
+    seed?: string; // base64,
 }
+
+/**
+ * @param {Setup} args
+ * @returns {string}
+ */
+export function setup(args: { sector_size: string; api_version: string; porep_id: string }): SetupResult;
+
+/**
+ * @param {UinSealt8Array} args
+ * @returns {string}
+ */
+export function seal(args: { file_path: string; ticket: string; sector_id: number; api_version: any; prover_id: string; porep_id: string }): SealResult;

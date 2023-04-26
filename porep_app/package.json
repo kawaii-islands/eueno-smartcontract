@@ -14,5 +14,8 @@
   "scripts": {
     "build": "CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse RUSTFLAGS='-C link-arg=-s -C target-cpu=native' RUSTUP_TOOLCHAIN=nightly nj-cli build --release --",
     "postinstall": "yarn -s build"
+  },
+  "dependencies": {
+    "cosmwasm": "^1.1.1"
   }
 }
