@@ -27,6 +27,17 @@ const submitProofTest = async () => {
         api_version: 'V1_0_0',
         sector_size: 'sector_size2_kib',
     });
+    console.log("setup_params", JSON.stringify(setup_params));
+    console.log("vk_raw", JSON.stringify(vk_raw));
+
+    console.log("data seal =>>>>>>", JSON.stringify({
+        prover_id,
+        porep_id,
+        sector_id,
+        ticket,
+        api_version: setup_params.api_version,
+        file_path: filePath,
+    }));
     const {proof_raw, public_inputs} = seal({
         prover_id,
         porep_id,
@@ -36,7 +47,8 @@ const submitProofTest = async () => {
         file_path: filePath,
     });
 
-    // console.log("proof_raw", proof_raw);
+    console.log("proof_raw", JSON.stringify(proof_raw));
+    console.log("public_inputs", JSON.stringify(public_inputs));
     // let txSetVerify = await setVerifyParams(
     //     {
     //         set_verifier_params: {
@@ -47,21 +59,21 @@ const submitProofTest = async () => {
     //     });
     // console.log("txSetVerify", txSetVerify);
 
-    const submitProofData = {
-        submit_proof: {
-            api_version: 'V1_0_0',
-            porep_id: porep_id,
-            prover_id: prover_id,
-            proof_raw: proof_raw,
-            sector_id: sector_id,
-            ticket: ticket,
-            public_inputs: public_inputs,
-            sector_size: "sector_size2_kib",
-        },
-    };
-
-    let txSubmitProof = await submitProof(submitProofData);
-    console.log("txSubmitProof", txSubmitProof);
+    // const submitProofData = {
+    //     submit_proof: {
+    //         api_version: 'V1_0_0',
+    //         porep_id: porep_id,
+    //         prover_id: prover_id,
+    //         proof_raw: proof_raw,
+    //         sector_id: sector_id,
+    //         ticket: ticket,
+    //         public_inputs: public_inputs,
+    //         sector_size: "sector_size2_kib",
+    //     },
+    // };
+    //
+    // let txSubmitProof = await submitProof(submitProofData);
+    // console.log("txSubmitProof", txSubmitProof);
 
 
 };

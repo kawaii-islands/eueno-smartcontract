@@ -17,7 +17,7 @@
 # IDEs
 *.iml
 .idea
-secret.*
+secret.ts
 .env
 
-secret.json
+secret.ts

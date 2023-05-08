@@ -3,10 +3,11 @@ Cargo.lock
 artifacts
 sccache.log
 .oraid
-index.node
 node_modules
 seal/file_2kiB.txt
 contract/*.txt
 seal/1.txt
 seal/*.txt
 .idea
+porep_app
+
